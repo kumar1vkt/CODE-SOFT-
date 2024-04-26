@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator </title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    #container{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        background: darkslategray;
+        border-radius: 10px;
+        box-shadow: 2px 2px 12px 5px rgb(146, 200, 202);
+        padding: 10px;
+        transform: translate(-50%,-50%);
+            }
+            #maindiv1{
+                background-color: rgb(191, 209, 210);
+                border-radius: 5px;
+                color: rgb(1, 11, 11);
+padding: 10px;
+font-size: x-large;
+            }
+            #butons{
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                gap: 5px;
+                
+                
+            }
+
+            #row{
+                display: flex;
+                justify-content: space-around;
+                gap: 3px;
+            }
+
+            #row button{
+                width: 50px;
+                height: 50px;
+                outline: rgb(1, 11, 11);
+                font-size: x-large;
+                border-radius: 50%;
+                border: 2px rgb(18, 18, 18);
+            
+            }
+            #row button:hover{
+background-color: rgb(104, 220, 228);
+            }
+           
+
+           
+</style>
+<body>
+    <div id="container">
+<div id="maindiv1">
+    <p id="maindiv1">0</p>
+</div>
+
+<div id="butons">
+<div id="row">
+    <button>C</button>
+    <button>Del</button>
+    <button>+</button>
+    <button>%</button>
+</div>
+
+<div id="row">
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>/</button>
+    </div>
+
+<div id="row">
+   <button>4</button>
+   <button>5</button>
+   <button>6</button>
+   <button>*</button>
+</div>
+
+<div id="row">
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>-</button>
+</div>
+
+<div id="row">
+    <button id="minidiv">.</button>
+    <button>0</button>
+    <button id="equals" style="width: 100px;">=</button>
+</div> 
+</div>
+</div>
+
+
+
+<script>
+
+let buttons=document.getElementsByTagName('button')
+let maindiv=document.getElementById('maindiv1')
+
+
+for(i=0;i<buttons.length;i++){
+    buttons[i].onclick=function(){
+        let input=this.innerText;
+        updateDipslay(input)
+    }
+}
+
+function updateDipslay(input){
+    let currentdisplay=maindiv.innerText;
+    if(currentdisplay=='0'){
+    if(input!='c'&&input!='Del'&&input!='='){
+        maindiv.innerText=input;
+    }
+
+}
+else{
+
+
+if(input=="Del"){
+    maindiv.innerText=currentdisplay.substring(0,currentdisplay.length-1)
+
+}
+if (input=="C"){
+    maindiv.innerText="0";
+}
+
+if(input!='C'&&input!='Del'&&input!='='){
+    maindiv.innerText+=input
+}
+
+if(input=='='){
+    let display=maindiv.innerText
+    maindiv.innerText=eval(display)
+}
+}
+}
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
